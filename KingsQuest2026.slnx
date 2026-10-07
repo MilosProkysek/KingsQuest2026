@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="KingsQuest2026.Data/KingsQuest2026.Data.csproj" Id="b0220da7-0788-40ee-ac7a-28740f82deb1" />
+  <Project Path="KingsQuest2026/KingsQuest2026.csproj" />
+</Solution>
