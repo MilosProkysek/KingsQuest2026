@@ -1,5 +1,7 @@
 ﻿using KingsQuest2026.Data;
+using KingsQuest2026.Service;
 using KingsQuest2026.View;
+using System.Diagnostics;
 
 namespace KingsQuest2026
 {
@@ -8,30 +10,17 @@ namespace KingsQuest2026
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-            Room r = new Room()
-            {
-                Name = "Sal",
-                Description = "To je krasny trunni sal. Je tu i krasny trun."
-            };
+            Game game = Game.Instance;
+            GameService gameService = new GameService(game);
+            gameService.InitGame();
 
-            Room z = new Room()
-            {
-                Name = "Zbrojnice",
-                Description = "To je zbrojnice. Je tu spousta zbrani."
-            };
-
-            r.ConnectedRooms.Add(z);
-            z.ConnectedRooms.Add(r);
-
-
-            Character king = new Character() { Name = "Kral", Description = "Mocny kral" };
-            r.Characters.Add(king);
+            Game gameTest = Game.Instance;
+            Debug.WriteLine($"Game rooms count:{gameTest.Rooms.Count}");
 
             while (true)
             {
-                GeneralView.DisplayMessage($"Ted jsi v:{r}");
-                RoomView.DisplayRoom(r);
+                GeneralView.DisplayMessage($"Ted jsi v:{gameService.GetCurrentRoom()}");
+                RoomView.DisplayRoom(gameService.GetCurrentRoom());
 
                 GeneralView.DisplayMessage("Co chces delat?");
                 string? inputString = Console.ReadLine();
@@ -41,14 +30,9 @@ namespace KingsQuest2026
                     switch (inputStrings[0])
                     {
                         case "jdi":
-                            GeneralView.DisplayMessage($"jdu do mistnosti: {inputStrings[1]}");
-                            Room nextRoom = r.ConnectedRooms.Find(x => x.Name.ToLower() == inputStrings[1].ToLower());
-                            if (nextRoom != null)
-                            {
-                                r = nextRoom;
-                            }
-                            else
-                            {
+                            GeneralView.DisplayMessage($"jdu do mistnosti: {inputStrings[1]}");                            
+                            if (!gameService.MoveToRoom(inputStrings[1]))
+                            { 
                                 GeneralView.DisplayMessage($"Mistnost {inputStrings[1]} neexistuje.");
                             }
 
@@ -57,7 +41,6 @@ namespace KingsQuest2026
                             return;
                     }
                 }
-
             }
         }
     }

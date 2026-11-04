@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="KingsQuest2026.Data/KingsQuest2026.Data.csproj" Id="b0220da7-0788-40ee-ac7a-28740f82deb1" />
+  <Project Path="KingsQuest2026.Service/KingsQuest2026.Service.csproj" Id="99f9c972-deb0-4e0f-9d8b-8d983c4ecad8" />
   <Project Path="KingsQuest2026.View/KingsQuest2026.View.csproj" Id="7b2c5d33-c05f-449f-bc02-8fdcd55e2a64" />
   <Project Path="KingsQuest2026/KingsQuest2026.csproj" />
 </Solution>
