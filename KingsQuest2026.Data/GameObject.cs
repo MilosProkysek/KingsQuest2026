@@ -14,6 +14,6 @@ namespace KingsQuest2026.Data
             return this.Name;
         }
 
-        public abstract void Print();
+        //public abstract void Print();
     }
 }

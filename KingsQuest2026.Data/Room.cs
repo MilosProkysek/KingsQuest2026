@@ -17,15 +17,14 @@ namespace KingsQuest2026.Data
             }
         }
 
-        public override void Print()
+        private List<Room> _connectedRooms;
+        public List<Room> ConnectedRooms
         {
-            Console.WriteLine(this.Description);
-            Console.Write("Postavy v mistnosti: ");
-            foreach (Character c in this.Characters)
+            get
             {
-                Console.Write($"{c.Name}\t");
+                if (_connectedRooms == null) { _connectedRooms = new List<Room>(); }
+                return _connectedRooms;
             }
-            Console.WriteLine();
-        }
+        }        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using KingsQuest2026.Data;
+using KingsQuest2026.View;
 
 namespace KingsQuest2026
 {
@@ -14,15 +15,25 @@ namespace KingsQuest2026
                 Description = "To je krasny trunni sal. Je tu i krasny trun."
             };
 
+            Room z = new Room()
+            {
+                Name = "Zbrojnice",
+                Description = "To je zbrojnice. Je tu spousta zbrani."
+            };
+
+            r.ConnectedRooms.Add(z);
+            z.ConnectedRooms.Add(r);
+
+
             Character king = new Character() { Name = "Kral", Description = "Mocny kral" };
             r.Characters.Add(king);
 
-            Console.WriteLine($"Ted jsi v:{r}");
-            r.Print();
-            
             while (true)
             {
-                Console.WriteLine("Co chces delat?");
+                GeneralView.DisplayMessage($"Ted jsi v:{r}");
+                RoomView.DisplayRoom(r);
+
+                GeneralView.DisplayMessage("Co chces delat?");
                 string? inputString = Console.ReadLine();
                 if (inputString != null)
                 {
@@ -30,7 +41,17 @@ namespace KingsQuest2026
                     switch (inputStrings[0])
                     {
                         case "jdi":
-                            Console.WriteLine($"jdu do mistnosti: {inputStrings[1]}");
+                            GeneralView.DisplayMessage($"jdu do mistnosti: {inputStrings[1]}");
+                            Room nextRoom = r.ConnectedRooms.Find(x => x.Name.ToLower() == inputStrings[1].ToLower());
+                            if (nextRoom != null)
+                            {
+                                r = nextRoom;
+                            }
+                            else
+                            {
+                                GeneralView.DisplayMessage($"Mistnost {inputStrings[1]} neexistuje.");
+                            }
+
                             break;
                         case "exit":
                             return;
