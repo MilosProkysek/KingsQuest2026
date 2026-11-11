@@ -2,12 +2,19 @@
 using KingsQuest2026.Service;
 using KingsQuest2026.View;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace KingsQuest2026
 {
-
     internal class Program
     {
+        private enum Command
+        {
+            GO,
+            EXIT,
+            UNKNOWN
+        }
+
         private static void Main(string[] args)
         {
             Game game = Game.Instance;
@@ -26,25 +33,41 @@ namespace KingsQuest2026
                 RoomView.DisplayRoom(gameService.GetCurrentRoom());
 
                 GeneralView.DisplayMessage("MSG_COMMAND_PROMPT");
-                string? inputString = Console.ReadLine();
+                string inputString = String.Empty;
+                inputString = Console.ReadLine();
+                Command command = Command.UNKNOWN;
+                string commandArgument = string.Empty;
+
+                //[DEBUG] hard coded command for testing
+                ProcessInput(inputString, out command, out commandArgument);
+
+
                 if (inputString != null)
                 {
-                    string[] inputStrings = inputString.Split(' ');
-                    switch (inputStrings[0])
+                    switch (command)
                     {
-                        case "jdi":
-                            GeneralView.DisplayMessage($"jdu do mistnosti: {inputStrings[1]}");                            
-                            if (!gameService.MoveToRoom(inputStrings[1]))
-                            { 
-                                GeneralView.DisplayMessage($"Mistnost {inputStrings[1]} neexistuje.");
+                        case Command.GO:
+                            GeneralView.DisplayMessage($"jdu do mistnosti: {commandArgument}");
+                            if (!gameService.MoveToRoom(commandArgument))
+                            {
+                                GeneralView.DisplayMessage($"Mistnost {commandArgument} neexistuje.");
                             }
 
                             break;
-                        case "exit":
+                        case Command.EXIT:
                             return;
                     }
                 }
             }
+        }
+
+        private static void ProcessInput(string inputString, out Command command, out string commandArgument)
+        {
+            string[] inputStrings = inputString.Split(' ');
+            string commandString = inputStrings[0].ToLower();
+
+            command = Command.GO;
+            commandArgument = inputStrings[1].ToString();
         }
     }
 }

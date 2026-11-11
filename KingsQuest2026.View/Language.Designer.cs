@@ -22,7 +22,7 @@ namespace KingsQuest2026.View {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Language {
+    public class Language {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace KingsQuest2026.View {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KingsQuest2026.View.Language", typeof(Language).Assembly);
@@ -51,7 +51,7 @@ namespace KingsQuest2026.View {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,27 @@ namespace KingsQuest2026.View {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to exit.
+        /// </summary>
+        public static string CMD_EXIT {
+            get {
+                return ResourceManager.GetString("CMD_EXIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to go.
+        /// </summary>
+        public static string CMD_GO {
+            get {
+                return ResourceManager.GetString("CMD_GO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello hero!.
         /// </summary>
-        internal static string HELLO {
+        public static string HELLO {
             get {
                 return ResourceManager.GetString("HELLO", resourceCulture);
             }
@@ -72,7 +90,7 @@ namespace KingsQuest2026.View {
         /// <summary>
         ///   Looks up a localized string similar to What you want to do?.
         /// </summary>
-        internal static string MSG_COMMAND_PROMPT {
+        public static string MSG_COMMAND_PROMPT {
             get {
                 return ResourceManager.GetString("MSG_COMMAND_PROMPT", resourceCulture);
             }
