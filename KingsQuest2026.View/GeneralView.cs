@@ -6,9 +6,16 @@ namespace KingsQuest2026.View
 {
     public static class GeneralView
     {
-        public static void DisplayMessage(string message)
+        public static void DisplayMessage(string messageKey)
         {
-            Console.WriteLine(message);
+            Console.WriteLine(L.Loc(messageKey));
+        }
+
+        public static void WelcomeMessage()
+        {
+            //Console.WriteLine(Language.ResourceManager.GetString("HELLO"));
+            Console.WriteLine(L.Loc("MISSING_KEY"));
+            Console.WriteLine(L.Loc("HELLO"));
         }
     }
 }

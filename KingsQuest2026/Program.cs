@@ -16,13 +16,16 @@ namespace KingsQuest2026
 
             Game gameTest = Game.Instance;
             Debug.WriteLine($"Game rooms count:{gameTest.Rooms.Count}");
+            //[DEBUG] culture info
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("cs-CZ");
+            GeneralView.WelcomeMessage();
 
             while (true)
             {
                 GeneralView.DisplayMessage($"Ted jsi v:{gameService.GetCurrentRoom()}");
                 RoomView.DisplayRoom(gameService.GetCurrentRoom());
 
-                GeneralView.DisplayMessage("Co chces delat?");
+                GeneralView.DisplayMessage("MSG_COMMAND_PROMPT");
                 string? inputString = Console.ReadLine();
                 if (inputString != null)
                 {
