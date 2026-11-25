@@ -129,4 +129,13 @@
   <data name="MSG_COMMAND_PROMPT" xml:space="preserve">
     <value>What you want to do?</value>
   </data>
+  <data name="MSG_ROOM_NOT_FOUND" xml:space="preserve">
+    <value>I don't know where to go.</value>
+  </data>
+  <data name="MSG_ROOM_NO_ARGUMENTS" xml:space="preserve">
+    <value>I don't know such room.</value>
+  </data>
+  <data name="PROMPT_COMMAND" xml:space="preserve">
+    <value>Enter command: </value>
+  </data>
 </root>

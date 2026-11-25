@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KingsQuest2026.Shared;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

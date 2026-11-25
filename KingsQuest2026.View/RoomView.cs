@@ -6,7 +6,7 @@ namespace KingsQuest2026.View
     {
         public static void DisplayRoom(Room room)
         {
-            Console.WriteLine(room.Description);
+            Console.WriteLine(room.Name);
             Console.Write("Postavy v mistnosti: ");
             foreach (Character c in room.Characters)
             {

@@ -1,5 +1,7 @@
-﻿using System.Diagnostics;
-using KingsQuest2026.Data;
+﻿using KingsQuest2026.Data;
+using KingsQuest2026.Shared;
+using KingsQuest2026.View;
+using System.Diagnostics;
 
 namespace KingsQuest2026.Service
 {
@@ -43,16 +45,61 @@ namespace KingsQuest2026.Service
 
             Debug.WriteLine("*** Game initialization done ***");
         }
+        
+        public void Run()
+        {
+            GeneralView.WelcomeMessage();
+
+            while (true)
+            {
+                //GeneralView.DisplayMessage($"Ted jsi v:{GetCurrentRoom()}");
+                RoomView.DisplayRoom(GetCurrentRoom());
+
+                GeneralView.DisplayMessage("MSG_COMMAND_PROMPT");
+                CommandObject commandObject = GeneralView.GetCommand();
+                //string inputString = String.Empty;
+                //inputString = Console.ReadLine();
+                Command command = Command.UNKNOWN;
+                //string[] commandArguments;
+
+                //string commandArgument = string.Join(" ", commandArguments);
+
+                    switch (commandObject.Command)
+                    {
+                        case Command.GO:
+                            //GeneralView.DisplayMessage($"jdu do mistnosti: {commandArgument}");
+
+                            //empty arguments check
+                            if (commandObject.arguments.Count == 0)
+                            {
+                                GeneralView.DisplayMessage("MSG_ROOM_NO_ARGUMENTS");
+                                break;
+                            }
+
+                            if (!MoveToRoom(commandObject.arguments[0]))
+                            {
+                                GeneralView.DisplayMessage("MSG_ROOM_NOT_FOUND");
+                                break;
+                            }
+
+                            break;
+                        case Command.EXIT:
+                            return;
+                    }
+            }
+        }
 
         public Room GetCurrentRoom()
         {
             return _game.CurrentRoom;
         }
 
-        public bool MoveToRoom(string roomName)
+        public bool MoveToRoom(IGameObject? newRoom)
         {
+            if(newRoom ==null ) return false;
+
             Room currentRoom = _game.CurrentRoom;
-            Room nextRoom = currentRoom.ConnectedRooms.Find(x => x.Name.ToLower() == roomName.ToLower());
+            Room nextRoom = currentRoom.ConnectedRooms.Contains(newRoom) ? newRoom as Room : null;
             if (nextRoom != null)
             {
                 _game.CurrentRoom = nextRoom;
@@ -61,7 +108,7 @@ namespace KingsQuest2026.Service
             }
             else
             {
-                Debug.WriteLine($"Room {roomName} does not exist.");
+                Debug.WriteLine($"Room does not exist.");
                 return false;
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using KingsQuest2026.Shared;
 
 namespace KingsQuest2026.Data
 {

@@ -95,5 +95,32 @@ namespace KingsQuest2026.View {
                 return ResourceManager.GetString("MSG_COMMAND_PROMPT", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I don&apos;t know such room..
+        /// </summary>
+        public static string MSG_ROOM_NO_ARGUMENTS {
+            get {
+                return ResourceManager.GetString("MSG_ROOM_NO_ARGUMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I don&apos;t know where to go..
+        /// </summary>
+        public static string MSG_ROOM_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("MSG_ROOM_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter command: .
+        /// </summary>
+        public static string PROMPT_COMMAND {
+            get {
+                return ResourceManager.GetString("PROMPT_COMMAND", resourceCulture);
+            }
+        }
     }
 }

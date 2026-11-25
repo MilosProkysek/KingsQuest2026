@@ -129,4 +129,13 @@
   <data name="MSG_COMMAND_PROMPT" xml:space="preserve">
     <value>Co chces delat?</value>
   </data>
+  <data name="MSG_ROOM_NOT_FOUND" xml:space="preserve">
+    <value>Ted nevím, kam jít.</value>
+  </data>
+  <data name="MSG_ROOM_NO_ARGUMENTS" xml:space="preserve">
+    <value>Taková místnost asi není.</value>
+  </data>
+  <data name="PROMPT_COMMAND" xml:space="preserve">
+    <value>Co chceš dělat? </value>
+  </data>
 </root>

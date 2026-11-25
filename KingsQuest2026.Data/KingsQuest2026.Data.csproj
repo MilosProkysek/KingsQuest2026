@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KingsQuet2026.Shared\KingsQuest2026.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
